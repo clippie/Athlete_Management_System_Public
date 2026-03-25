@@ -1,76 +1,40 @@
-# Athlete_Management_System_Public
-This repository displays a proprietary athlete management system I created for the SU Women's Lacrosse Program. This system aggregates data from different sources and stores everything in a centralized database. This allows users to easily access performance data all in one place, giving insights into health, load management, and strength testing.
-
-Login/Authentication:
-<img width="959" height="440" alt="image" src="https://github.com/user-attachments/assets/7922e361-7282-4475-98b6-a83c68b19d9b" />
-
-Team Home Page:
-<img width="959" height="437" alt="image" src="https://github.com/user-attachments/assets/fe56f9cf-e93f-4e47-a44a-3c9fe2712441" />
-
-25% percetile conditional formatting. 
-
-STatsports:
-<img width="944" height="439" alt="image" src="https://github.com/user-attachments/assets/16acb47f-cc73-405b-894a-03130883cd62" />
-
-Daily Readiness:
-<img width="949" height="440" alt="image" src="https://github.com/user-attachments/assets/07020f5d-91ff-4f65-8a13-22b038ea5b72" />
-
-Data Management
-<img width="949" height="440" alt="image" src="https://github.com/user-attachments/assets/a7bec9a3-a3f6-47a1-a3b2-e007d6d1af97" />
-
 # Athlete Management System (AMS)
 
-A full-stack web dashboard built for a collegiate lacrosse coaching staff to monitor athlete health, daily readiness, and GPS performance data — all in one place.
+A full-stack web dashboard built for Syracuse Women's lacrosse coaching staff to monitor athlete health, daily readiness, and GPS performance data all in one place.
 
-This was my first full-stack web project. It replaced a workflow where coaches were manually exporting spreadsheets from multiple platforms to make load management decisions. The system connects to GPS wearables, Google Sheets wellness surveys, and baseline athletic testing data, and presents everything through an interactive dashboard.
+This was my first full-stack web project. In the past, I tried alternative dashboard methods like Power BI and R Shiny, but these didn't give me the freedom and customization I wanted. That led me to this project, where I wanted to design the full system from scratch. I learned a lot through this process and was able to use the site to create a weekly report for the coaching staff. Since everything is in one place, it makes for more connected and informed decisions. For example, the daily readiness survey results were previously conditionally formatted by a set value in a Google Sheet (> 8 = green, < 4 = red). With this system, you can see if a player's scores fall within 25% of their own scores, making the formatting more meaningful. 
 
-Built for a program managing 35+ athletes.
-
----
-
-## Screenshots
-
-| Login | Team Home |
-|---|---|
-| ![Login](screenshots/login.png) | ![Team Home](screenshots/team_home.png) |
-
-| STATSports GPS Analytics | Daily Readiness Surveys |
-|---|---|
-| ![STATSports](screenshots/statsports.png) | ![Daily Readiness](screenshots/daily_readiness.png) |
-
-| Data Management |
-|---|
-| ![Data Management](screenshots/data_management.png) |
-
----
-
-## What It Does
-
-**For coaching staff (2–5 users):**
-
-- View individual athlete or full-team wellness data across any date range
-- See GPS session metrics from wearables (distance, speed zones, sprint counts, load)
-- Track daily wellness survey responses (sleep, mood, energy, stress, muscle soreness)
-- Review baseline athletic testing results (jump height, strength, sprint times)
-- Sync all data sources with one click from the Data Management page
+A separate database was created, and the frontend was rerouted to get the screenshots. The data values are within what we would expect from the range of values in each column. Since the data is not real, there are no insights to be gained from the screenshots themselves.
 
 ---
 
 ## Pages
 
-**Login** — Secure login with JWT authentication. Coaches and athletes have different access levels.
+*Note: A separate database was created, and the frontend was rerouted to get the screenshots. The data values are within what we would expect from the range of values in each column. Since the data is not real, there are no insights to be gained from the screenshots themselves.*
 
-**Team Home** — Side-by-side comparison of all athletes for a selected date range. Shows total distance, wellness scores, sleep, and soreness at a glance.
 
-**Home (Individual)** — Per-athlete view with a wellness radar chart, muscle soreness body diagram, distance per session, and GPS metric cards.
+**Login Page**
 
-**Daily Readiness** — Survey analytics focused on wellness trends. Radar chart, daily readiness score bars, and a multi-line chart tracking sleep, mood, energy, stress, and soreness over time.
+![Login](screenshots/Login_Page.png) 
+Here, the user must be authenticated before accessing any information. Users can have 2 different roles (coach, player), where coaches gain access to additional information.
 
-**STATSports** — GPS analytics from wearable devices. Distance zone donut chart (6 speed zones from walking to sprinting), average distance per player bar chart, and metric summary cards.
+**Team Home Page:**
+![Team Home](screenshots/Team_Home_Page.png)
+This is the main page for all basic monitoring. Conditional formatting is based on the player's own data, and the top and bottom 25% are flagged and compared to overall averages below each cell value. Additionally, team-wide values are displayed in the cards at the top to get a snapshot of how the team is performing as a whole. This is particularly useful after a strenuous practice/game, long travel day, or even during exam weeks. This page is meant for day-to-day monitoring and can be used to inform schedule changes or player check-ins. 
 
-**Testing Data (Incomplete)** — Strength and speed benchmark results from periodic assessments (countermovement jump, broad jump, strength tests, sprint times). Shows bilateral asymmetry for injury awareness.
+**STATSports Page:**
+![STATSports](screenshots/STATSports_Page.png)
+The STATSport page is a deeper dive into select metrics available from their API connection. The API has over 1000 total rows, so I had to pick out metrics that I thought would be the most useful. Some of the more advanced metrics are displayed in the cards on the right of the page. The charts are customizable, allowing the user to pick between Total Distance, High Speed Running, Accelerations, and Decelerations. The zone breakdown in the bottom left shows how much of the metric was achieved in a certain intensity zone threshold. This gives insight into how intense a session is. For example, a 4000m walk has more total distance than 3000 meters of sprints, but the sprints are more intense, which is an important distinction to visualize. Additionally, there are tooltips for charts that give exact measurements for specific data points. The player selector on the left side, below the date range selector, allows the user to look at a specific player profile.
 
-**Data Management** — Sync calendar showing which dates have data from each source (GPS, surveys, testing). One-click sync buttons for each data pipeline.
+**Daily Readiness Page:**
+![Daily Readiness](screenshots/Daily_Readiness_Page.png)
+On this page, the user gets more insight into the daily surveys that players complete. When reading from left to right, the user sees a progressively more specific view of the data. The chart in the middle allows the user to see relationships between metrics over time. The most impactful visual, in my opinion, is the horizontal bar chart on the right, which compares each metric over the selected date range to its overall average with the diamond icons. Comparing players to themselves rather than to a general standard was one of the goals of this project and something that was missing from previous analyses.
+
+**Data Management Page:**
+![Data Management](screenshots/Data_Management_Page.png)
+This page allows the user to monitor all the data streams and make sure they are up to date. I didn't want to have a scheduled sync due to inconsistent practice and game schedules, so I instead decided on a button-based sync. This means that it is up to the user to maintain data freshness by syncing new data. The calendar also provides insight into what data has already been synced, so the user is not in the dark on what data is in the database already. 
+
+**Testing Data (Incomplete)** — Connected to some strength testing data, and the sync system was set up. The frontend was never finalized due to a lack of need for testing data analysis. 
 
 ---
 
@@ -126,7 +90,7 @@ frontend/ams-frontend/src/
 
 ## What I Learned
 
-This was my first time building something full-stack from scratch. A few things that took real debugging to figure out:
+Since this was my first time building something full-stack from scratch, there were a few things that took real debugging to figure out:
 
 - **Timezone bugs** — JavaScript's date methods apply local timezone offsets to UTC timestamps from the API, so calendar dates were showing up one day off. Fixed by switching to UTC-specific methods (`getUTCDate()`, etc.) everywhere dates are displayed.
 - **Survey date vs. sync date** — Charts were only showing one data point instead of a full date range. The backend was filtering surveys by when they were synced, not when they were actually filled out. Fixing the query column fixed the charts immediately.
