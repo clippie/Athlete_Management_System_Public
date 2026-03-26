@@ -1,6 +1,6 @@
 # Athlete Management System (AMS)
 
-A full-stack web dashboard built for Syracuse Women's lacrosse coaching staff to monitor athlete health, daily readiness, and GPS performance data all in one place.
+A full-stack web dashboard built for Syracuse Women's Lacrosse coaching staff to monitor athlete health, daily readiness, and GPS performance data all in one place.
 
 This was my first full-stack web project. In the past, I tried alternative dashboard methods like Power BI and R Shiny, but these didn't give me the freedom and customization I wanted. That led me to this project, where I wanted to design the full system from scratch. I learned a lot through this process and was able to use the site to create a weekly report for the coaching staff. Since everything is in one place, it makes for more connected and informed decisions. For example, the daily readiness survey results were previously conditionally formatted by a set value in a Google Sheet (> 8 = green, < 4 = red). With this system, you can see if a player's scores fall within 25% of their own scores, making the formatting more meaningful. 
 
